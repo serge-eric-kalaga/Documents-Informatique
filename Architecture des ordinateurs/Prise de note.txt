@@ -1,0 +1,13 @@
+Format pour l’adressage immediate
+Instruction Registre, donnees
+Ex :
+- mov AX, 243
+- add AX, 243h
+- mov AX, OxA243
+
+Adressage registre
+         Instruction registre
+Inst R, Ra
+Ex :
+- inc AX
+- mov AX, AX
