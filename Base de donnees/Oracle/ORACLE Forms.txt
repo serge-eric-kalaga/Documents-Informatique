@@ -1,0 +1,81 @@
+
+-Dans une architecture 3 tiers la parie metier se trouve au niveau du serveur d'application
+
+-L'architecture 3 tiers comprend: les machines client, le serveur de BD, le serveur d'application
+
+-Une transaction est un ensemble d'instructions LMD suivis d'un commit ou un RollBack
+
+-Dictionnaire d'objet: un element qui permet de regrouper un ensemble d'objets dans le but d'une reutilisation
+
+-Une application transactionnelle est une appli qui comporte beaucoups d'instruction LMD
+
+-Une application decisionnelle est une appli qui invite les decideurs a la prise de decisions a travers des reportings
+
+-Oracle forms (developpement), Oracle Database 11g (gestion de BD), Oracle weblogis 11g server(server application), 
+ Oracle developper suite (package comportant un ensemble d'outils), Oracle Forms et Repports developper (Outil permettant au developpeurs la 
+ conception facile et rapide d'applo efficaces et securises)
+ * Oracle Forms Builder permet de concevoir les differents ecrans, Oracle Repports developper concevoir les differents etats.
+
+-RAD (Rapide Application Developpement)
+
+_Le mnavigateur (c'est un outil de form builder qui permet d'afficher l'ensemble des outils de facons hierarchique(sous forme d'un arbre))
+ l'ensemble des composamt d'un module Form) de ORACLE Forms Builder est compose des elements suivants:
+	-Module: represente le nom de l'appli Oracle Forms (ecran, menu, biblioteque d'objets, biblioteque PLSQL)
+	-Declencheurs: represente les trigers cote client
+	-Les alertes: represente les messagesbox
+	-Biblioteque attaches: code PLSQL stocke dans un fichier externe a extension PLL
+	-Bloc de donnnees: comporte le nom de la source de donnes sur laquelle l'ecran est base
+	-Canevas: represente l'espace ou la feuille sur laquelle sont disposes les champs 
+	-Editeur: permet d'afficher le contenu d'un champ dans une zone plus large
+	-LOV (List Of Values): affichage des listes de valeur (liste deroulante dont la source peut etre statique ou dinamique)
+	-Groupes d'objet: pour la reutilisation des composants, composes des differents types d'objets
+	-Parametres: Permet le passage entre les valeurs ou entre ecran et formulaire.
+	-Menu contextuel : obtenu avec le bouton droit
+	-Unites de programme: permet de realiser des blocs PLSQL anonyme
+	-Classe de proprietes: permet  de regrouper dans une classe  un ensemble de proprietes liees a un item
+	-Groupes d'enregistrements: a chaque fois qu'une LOV est creee, un groupe d'enregistrement est aussi associe
+	-Etats: repports
+	-Attributs visuels: effet de couleur sur des champs
+	-Fenetres: window dans lequel se fait execute
+
+
+- Il existe modes 2 de presentation. Mode tabulaire et mode form. Avec le mode tabulaire il est possible d'afficher plusieurs lignes;
+  Le mode formulaire est conseille pour la saisie.
+  Quand un ecran est un ecran de saisie il est en mode saisie, il est en mode enter_query lorsqu'il est en mode interrogation.
+
+- Un module forms a l'extension FMB en source, et FMX en executable.
+-Les modules menu ont l'extension MMB pour la source et MMX pour l'executable.
+-Les biblioteques PLSQL ont l'extension PLL pour la source et PLX pour l'executable.
+-Les biblioteques d'objets ont l'extension OLB pour la source.
+
+
+- Un attribut visuel designe la mise en evidence d'un enregistrement par des polices particulieres.
+  
+  
+  
+  
+  Commande Forms Builder:
+
+	Afficher l'ensemble des users connectes:	select username from dba_username;
+	Debloquer user: 	Alter user nom_user account unlock;
+	Affiche tables d'un user:	select table_name from nom_user;
+  
+
+
+
+
+
+
+INSTALLATION:
+----Installer JDK
+----Installer Web logic 11g
+----Installer Forms et reports Builder
+----Configurer une instance classic
+----Developper
+----Deployer
+
+
+
+
+
+

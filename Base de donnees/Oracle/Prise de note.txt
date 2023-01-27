@@ -1,0 +1,182 @@
+A. Les vues
+
+1. Une vue est le resultat d'une requete a laquelle on a donne un nom
+   Elle est construite a  partir du resultat d'une requete "select".
+   C'est une  table virtuelle: c'est un ensemble de tuples qui n'existent
+   pas physiquement.
+   La vue sera appercue par l'utilisateur comme une table reelle
+   Une vue peut etre utilisee pour definir une autre vue.
+   Le nom d'une vue peut etre utilise partout on peut mettre le nom 
+   d'une table: dan les requetes select, update, grant, delete, insert
+   
+   a. Creation d'une vue
+      Synthaxe gnle:
+      CREATE VIEW nom_de_le_vue [liste d'attribut]
+      AS <requete d'interrogation SELECT> [WITH CHECK OPTION]
+      -La specification de la liste des attribut est facultative
+      -Par defaut, le nom des attribut de la vue ont le meme nom que ceux
+       du resultat de la requete select
+      -La close [WITH CHECK OPTION] empeche que l'user modifie dans une 
+       vue des lignes non conformes a def de la vue.
+
+       ex: - Create view etudiants_notes( codeEtudiant, nom, pre, note)
+             As Select *from etudiant.codeEtudiant = notes.codeEtudiant;
+           - Create View serge As Select * From Patients;
+
+    
+    b.Suppresion d'une vue
+
+      Synthaxe: DROP VIEW nom_de_le_vue
+      -La suppression d'une vue n'entraine pas la suppression des donnees
+      -Toutes les vues qui utilisent cette vue sont automatiquement 
+       detruit lors de sa suppression.
+      -Les vues figurent dans les tables systeme.
+
+exemple:RENAME ancien nom to nouveau nom
+
+d.utilisation ou interrogation
+ -Pour recuperer les donnees dune vue ou de plusieurs vues ,on procedera comme si l'on etait en table classique
+EXEMPLES:select *from nom_de_ma_vue;
+-En realite cette table est virtuelle.Elle est reconstruite  a chaque appel de la vue
+-En effet le contenue d'une vue est recalculee a chaque utilisation de la vue par sql
+
+2-Utilites des vues
+	Les vues permettent:
+-Les acces simplifies aux donnees
+	*Effets macro:remplacer une requete complique necessitants plusieurs etaoes par des requetes plus simples
+	*Les vues permettents egalements de masquer la complexite du shema de la base de donnees
+-Les vues offrent une independance logiques des donnees
+_La confiencialites des donnees 
+-L'integrite des donnees
+
+	a-Assurer la confidentialite des donnees
+-Grace aux vues il est possible:
+-d'emmettre des restrictions d'acces en fonction du contexte
+-Il est possible egalement de restreindre les accees a certains tuples.Il
+ est meme possible de donner dse privation sur certainses de modification de la vue
+
+
+        b. Independance logique des donnees
+-Les applications utilisant les tables de la base ne doivent pas etre modifier si on change le schema de la base
+  
+-Grace aux vues les app peuvent etre insensible aux changement du scheme logique de la base
+
+        c. Renommage
+GRANT SELECT, UPDATE (nom, prenom, maladie) ON xyz TO root;
+
+
+3. Cas d'Oracle
+
+CREATE [or REPLACE] [[NO]FORCE] VIEW [sechema] nom_vue AS <requete d'interrogation SELECT> [WITH {READ ONLY | CHECK OPTION [CONSTRAINT nom_contrainte] } ];
+Ex: CREATE OR REPLACE VIEW Etudiant AS SELECT FROM Etudiants where Etudiants.moyenne>=10 WITH READ ONLY
+    CREATE OR REPLACE VIEW Etudiant AS SELECT FROM Etudiants where Etudiants.moyenne>=10 WITH CHECK OPTION
+
+
+
+
+
+                      B. Les Sequences
+1. Introduction
+
+   -Tous les SGBD offrent une facilite pour obtenir des identificateurs
+   -Cette facilite permet d'obtenir des valeurs qui sont generees auto pa le sgbd
+   -Cette facilite n'est malheureusement pas standaridisee
+    * Mysql permet d'ajouter la clause auto-incremente a un champ
+    * Microsoft SQL server et IBM DB2 ont une clause identity
+    * Oracle et PostgreySQL utilisent le sequences.
+
+2. Definitions et objectifs
+
+   -Une sequence est un objet de la BD tout comme les tables, les vues, etc.
+   -Les sequences sont un excellent moyen d'avoir une BD qui genere auto de cles primaires entiere, unique qui sont incrementees ou decrementees
+    par le serveur Oracle a chaque que l'on consulte.
+   -Les sequences  sont stockees et gerees independamment d'une table et peuvent etre partagees par plsr utilisateurs
+
+3. Synthaxe 
+
+   CREATE SEQUENCE nom_sequence [INCREMENT BY(1|valeur)] [START WITH valeur] [MAXVALUE valeur | nomaxvalue] [MINVALUE valeur | nominvalue] 
+   [CYCLE | NOCYCLE] [CACHE(valeur | 20)] | NOCACHE] [order | Norder]
+
+   
+   ex: insert into Etudiant(id, nom) values(nom_sequence.nextval)               #incrementation auto de l'id
+
+   Pour afficher la valeur d'une sequence:  nom_sequence.curval
+
+
+
+
+
+
+                       C. Les indexes
+c'est un objet facultatif associe a une table pour accelerer les requetes sur cette table
+
+Sythaxe: create[unique|bitmap|]index nom_index on nom_table(nom_attribut[asc|desc],...)
+
+
+
+
+
+
+°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°Le PL-SQL°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+
+langage de programmation procedurale permetteant de develloper des applications autour des BD
+
+Le PL/SQL peut être utilisé sous 3 formes :
+                                           -un bloc de code exécuté comme une commande SQL, via un interpréteur standard (SQL+ ou SQL*PLus)
+                                           -un fichier de commande PL/SQL
+                                           -un programme stocké (procédure, fonction, package ou trigger)
+
+*Synthaxe de la structure  d'un bloc PLSQL:
+  [DECLARE]
+	-définitions de variables, constantes, exceptions, curseurs
+  BEGIN
+	-les instructions à exécuter (ordres SQL, instructions PL/SQL,structures de contrôles)
+	[EXCEPTIONS]
+		-la récupération des erreurs (traitement des exceptions)
+  END ;
+
+  Les blocs comme les instructions se termine par un <<;>>. Un bloc peut contenir d'autres blocs; seul BEGIN et END sont obligatoires.
+
+Soit la table etudiant:
+	etudiant(numero, nom, prenom, adresse)
+	NomEtu etudiant.nom%type   ----"etudiant" sera de meme type que le champ "nom".
+
+Les types de variables dans PL/SQL:
+	°Les types habituels correspondants aux types SQL2 ou Oracle :integer, varchar,...
+	°Les types  composites adaptés  à  la  récupération  des  colonnes  et  des  lignes  des tables SQL : %TYPE, %ROWTYPE
+	°Type référence : REF
+
+			Declaration de variable
+	°Identificateur [CONSTANT] type [:= valeur];
+		Ex :-age integer; nom varchar(30);
+		    -dateNaissance date; ok boolean := true;
+	°Déclarations multiples interdites !(I, j integer ; interdit !)
+
+Remarque: la declaration de variable multiples et interdites.
+
+
+*UTILISATION DES VARIABLES %TYPE ET %ROWTYPE
+
+DECLARE
+	employe emp%ROWTYPE;
+	nom emp.nome.%TYPE;...
+BEGIN
+	SELECT * INTO employeFROM empWHERE matr = 900;
+	nom := employe.nome;
+	employe.dept := 20;...
+	INSERT INTO empVALUES employe;...
+END ;
+
+
+
+
+
+Types de données dans PL/SQL:
+	-Types de données standards SQL : char, date,number, etc.
+	-Types intégrés dans PL/SQL : boolean, binary, integer.
+
+
+Affichage en PL-SQL:  dbms_output_putline('La variable x est:'||x);
+
+
+

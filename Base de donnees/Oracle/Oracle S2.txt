@@ -1,0 +1,43 @@
+Les instructions LDD (create,  alter, drop, etc) jouent le role de Commit.
+Une transaction est une succession de requetes LMD
+Une vue est un sous ensemble d'une ou plusieurs tables
+
+Le dictionnaire de donnees est l'aensemble des tables et vues systemes regroupant des informations 
+sur les differentes donnees. Le proprietaire du dictionnaire de donnes est l'utilisateur SYS.
+
+Les typages de variables en PLSQL:
+-type oracle
+-type boolean
+-colonne%type  //meme type que la colonne
+-%rowtype      //meme type que la lignes
+
+- SQL*Plus est un outil oun un environnement qui a ses propres commandes et qui reconnait le langage SQL
+
+Les structures itteratives: for, while, loop
+
+lES EXCEPTIONS:
+	3 types d'erreurs:
+		-erreurs utilisateurs
+		-erreurs oracle non predefinies	
+		-erreurs oracle predefinies
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Questions de cours
+
+1. SQL : Structured Query langage
+2. 	LMD Langage de manipulation de donnees(select, insert update, delete)
+	LDD Langage de definitionde donnees (create, alter, drop, truncate)
+	LCD Langage de controle de donnees (grant, revoke)
+	Langage de controle de transaction (commit, rollback, savepoint)
+2.Quelques objets de la BD: vues, indexes, tables, packages, tables, sequences, ...
+3.Quelques fonctions de groupe: sum, min, max, abs, avg, sqrt, count, variance, ...
+4.Quelques fonctions s'appliquant au caracteres: rpad, lpad, rtripm, ltrim, instr, substr, lower, upper, replace, lenght, initcap, ...
+5. Instruction SQL permettant de supprimer les doublons: distinct
+
+6. Premiere lettre en majusccule
+	SQL> select initcap('marceline') from dual;
+
+	INITCAP
+	---------
+	Marceline
+

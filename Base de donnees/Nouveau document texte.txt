@@ -1,0 +1,33 @@
+Creation d’une base de donnee
+
+Create database serge;
+
+
+Creation de la table voiture
+
+CREATE TABLE  voiture(
+                                                      Marque VARCHAR PRIMARY KEY,
+                                                      Modele VARCHAR(50),
+                                                      Couleur VARCHAR(50),
+                                                     TypeVitesse INT
+
+);
+
+
+Insertion d’une donnee dans la table voiture
+
+INSERT INTO voiture (  marque, modele, couleur, typevitesse   ) ;
+VALUES (  ‘mercedess’, ‘peugeot’, ‘grise’, 300  ) ;
+
+
+
+Affichage des elements de la table
+
+SELECT *FROM voiture ;
+
+
+Suppression d’un element du tableau
+
+Delete from voiture where marque=’mercedess’ ;
+
+

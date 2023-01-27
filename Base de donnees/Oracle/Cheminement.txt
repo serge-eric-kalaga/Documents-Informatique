@@ -1,0 +1,93 @@
+SQL> conn SYSTEM
+Enter password:
+Connected.
+SQL> create user IAM identified by iam;
+
+User created.
+
+SQL> grant DBA to IAM;
+
+Grant succeeded.
+
+SQL> conn IAM/iam
+Connected.
+SQL> show user
+USER is "IAM"
+SQL> create table toto ( id number(1) , libelle varchar2(50));
+
+Table created.
+
+SQL> desc toto
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                                 NUMBER(1)
+ LIBELLE                                            VARCHAR2(50)
+
+SQL> insert into toto values(1, 'test');
+
+1 row created.
+
+SQL> select * from toto;
+
+        ID LIBELLE
+---------- --------------------------------------------------
+         1 test
+
+SQL> update toto
+  2  set libelle = 'tata'
+  3  where id=1;
+
+1 row updated.
+
+SQL> select * from toto;
+
+        ID LIBELLE
+---------- --------------------------------------------------
+         1 tata
+
+SQL> commit;
+
+Commit complete.
+
+SQL>
+
+SQL> desc toto;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                                 NUMBER(1)
+ LIBELLE                                            VARCHAR2(50)
+
+SQL> insert into toto values (2, 'essais');
+
+1 row created.
+
+SQL> commit
+  2
+SQL> commit;
+
+Commit complete.
+
+SQL> select * from toto;
+
+        ID LIBELLE
+---------- --------------------------------------------------
+         1 tata
+         2 essais
+
+SQL> select * from toto where id=&code;
+Enter value for code: 1
+old   1: select * from toto where id=&code
+new   1: select * from toto where id=1
+
+        ID LIBELLE
+---------- --------------------------------------------------
+         1 tata
+
+SQL> select * from toto where id=&code;
+Enter value for code: 2
+old   1: select * from toto where id=&code
+new   1: select * from toto where id=2
+
+        ID LIBELLE
+---------- --------------------------------------------------
+         2 essais

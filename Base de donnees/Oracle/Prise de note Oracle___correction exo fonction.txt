@@ -1,0 +1,95 @@
+
+			                      -----------EXO1---------
+
+Ecrire une fonction en plsql qui permet de calculer le factoriel d'un nombre entier N passe en parametre.
+La fonction devra afficher le resultat et devra etre compilee. Le parametre N peut etre superieur ou egale a 0.
+
+
+			SOLUTION1
+
+CREATE OR REPLACE FUNCTION factoriel(N integer)
+RETURN Integer IS
+
+DECLARE
+	Prod integer;
+	i Number;
+
+BEGIN 
+
+	Fac=1;
+
+	if N=0 or N=1
+		Fac=1;
+	DMms_output.put_line("Le factoriel est 1");
+	return 1
+
+	else
+		Fact:=1;
+		for i in N Loop
+			Fac := i*Fac;
+		End Loop
+		return Fac;
+	DMms_output.put_line("Le factoriel de"||N||"est"||fact);
+	END if;
+							
+END;
+/
+
+------------------------------------------------------
+
+Une fonction de recursivite est une fonction qui appelle elle meme.
+-------------------------------------------------------
+
+	
+					-----------EXO2-----------
+
+Ecrire une fonction de recursivite en PLSQL qui permet de faire la somme des N premiers nombres entiers, N etant un parametre de type number.
+La fonction devra etre compilee et vous donnerez pour N=15 l'instruction qui permet d'exuecuter la fonction et d'afficher le resultat.
+
+
+
+
+					SOLUTION2
+
+
+CREATE FUNCTION somme(N) 
+return number is
+
+DECLARE
+somme=0;
+
+BEGIN
+	if N=0 then
+		return 0;
+
+	else
+		RETURN somme= N + somme(N-1);
+	END if;
+
+END
+/
+
+EXECUTE DMms_output.put_line("La somme des "||N||" premiers nombres est: ||somme(15)");
+
+
+
+
+
+							---------EXO3-------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

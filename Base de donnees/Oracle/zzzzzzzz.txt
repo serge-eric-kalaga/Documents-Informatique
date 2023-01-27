@@ -1,0 +1,11 @@
+1.b.create Index_Numdept on Employe(numdept asc);
+
+1.c. Un synonyme c'est un autre nom pour une table, une vue, une sequence ou une unite de table. On l'emploi generalement dans
+	les situations suivantes:
+	-Pour dissumuler le nom du proprietaiire de la BD
+	-Pour masquer l'emplacement d'un objet de la base de donnee dans un environnement distribue
+	-Pour pouvoir se referer a un objet en utilisant un nom plus simple.
+
+2.a. select nomEmp from employe where profession='vendeur' and commission=salaire*0,25;
+2.b. select nom, localisation from dept, employe where profession.numdept is null;
+
