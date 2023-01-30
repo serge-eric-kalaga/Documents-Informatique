@@ -1,0 +1,12 @@
+11:28 20/05/2020
+
+Quelques commandes:
+
+cd: se diriger vers une destination.
+pwd: savoir le repertoire danslequel on se trouve.
+mkdir: creer un dossier.
+Sudo: permet de forcer le syteme a executer une commande.
+ls: liste le contenu d'un repertoire.
+cp : copier un fichier
+rm -r: supprimer.
+rm -rf: forcer la suppression.
