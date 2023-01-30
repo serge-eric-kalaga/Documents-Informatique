@@ -1,0 +1,43 @@
+
+               struct Daily_data
+{
+
+char date[30];
+int nouveaux_cas_confirmes;
+int nouveaux_desces;
+int nouveaux_guerisons;
+int total_cas_confirmes;
+int total_desces;
+int total_guerisons;
+
+}
+-------------------------------------------------------------------------------
+
+
+Une structure devient un "un type" pour une autre variable.
+EX:
+// creation d'une structure Point.    
+
+ struct point
+         {
+          int x;
+          int y;
+         }
+
+
+// Declaration d'une variable A avec les donnees de la structure.
+
+struct point A;
+A.x= 3;
+A.y= 7;
+
+//Affichage de A 
+
+printf("A a pour coordonnes %d et %d", A.x, A.y);
+
+
+
+"typedef struct point point" ( dans notre cas avec point ) permet de ne pas repeter "struct" a chaque fois qu'on voudra declarer une variable 
+du type de cette structure...
+Cette facon d'ecrire avertira au compilateur que a chaque fois que l'on voudra definir une variable de du type de cette structure;
+EX: point B;
